@@ -1,0 +1,5 @@
+config BR2_PACKAGE_NLED
+	bool "nled"
+	select BR2_PACKAGE_NCURSES
+	help
+	  The Neat Little Editor (NLED) https://cdot.senecacollege.ca/software/nled/

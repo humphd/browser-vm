@@ -1,0 +1,5 @@
+dist/*
+
+.gitignore
+LICENSE
+README.md

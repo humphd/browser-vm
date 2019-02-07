@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_v86_PATH/package/nled/Config.in"
