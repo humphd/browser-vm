@@ -1,7 +1,8 @@
 # Browser VM
 
 A custom [Buildroot](https://buildroot.org/) config for a Linux x86 VM, meant to
-be run in the browser.  The resulting Linux ISO is meant to be run under
+be run in the browser as part of [browser-shell](https://github.com/humphd/browser-shell).
+The resulting Linux ISO is meant to be run under
 emulation in the browser via [v86](https://github.com/copy/v86), and includes:
 
 * a custom Linux 4.15 kernel, which strips out many unnecessary drivers, modules, etc. and adds [Plan 9 filesystem](https://www.kernel.org/doc/Documentation/filesystems/9p.txt) sharing
