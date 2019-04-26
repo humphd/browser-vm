@@ -15,7 +15,7 @@ filesystem overlay, and scripts necessary to build our distribution.
 
 ## Running via Docker
 
-To build the Docker image:
+To build the Docker image use the `build.sh` script, or:
 
 ```bash
 $ docker build -t buildroot .
