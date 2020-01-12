@@ -21,7 +21,7 @@ RUN echo 'root:${ROOT_PASSWORD}' | chpasswd; \
 
 # Install all Buildroot deps and prepare buildroot
 WORKDIR /root
-RUN apt-get -q -y install \
+RUN DEBIAN_FRONTEND=noninteractive apt-get -q -y install \
     bc \
     build-essential \
     bzr \
