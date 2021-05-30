@@ -94,7 +94,7 @@ specifying the things I set.
 
 ```bash
 $ cd buildroot-2018.02
-$ make menucofing
+$ make menuconfig
 ```
 
 Then follow these config steps in the buildroot config menu (NOTE: these docs
