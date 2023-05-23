@@ -7,4 +7,4 @@ tmpfs		/tmp		tmpfs	mode=1777	0	0
 tmpfs		/run		tmpfs	mode=0755,nosuid,nodev	0	0
 sysfs		/sys		sysfs	defaults	0	0
 # Plan 9 Filer/IndexedDB browser filesystem on /mount
-host9p      /mnt        9p      trans=virtio,version=9p2000.L,rw        0   0
+host9p      /root        9p      trans=virtio,version=9p2000.L,rw        0   0

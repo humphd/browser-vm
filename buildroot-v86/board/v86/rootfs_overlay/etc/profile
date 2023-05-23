@@ -3,17 +3,20 @@
 # Nodejs
 export PATH=/usr/local/lib/nodejs/bin:$PATH
 
-#udhcpc
-mount -a
-mount host9p -t 9p /mnt
-
 echo 0 > /proc/sys/kernel/printk
 
 PS1='\W# '
 HOME='/root/'
 
 echo
-echo "Enable networking using 'udhcpc'"
-echo "Files send via emulator appear in /mnt/"
+echo "Now - Ready"
+echo
+
+# for i in `seq 5`
+# do
+#     time node --version
+# done
+
+unset HISTFILE
 
 cd ~

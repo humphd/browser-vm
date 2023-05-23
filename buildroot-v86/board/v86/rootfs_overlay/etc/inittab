@@ -1,30 +1,39 @@
-# This is run first except when booting in single-user mode.
+# XXX: updated to add ttyS0 terminal and autologin.
 #
-#::sysinit:/etc/boot.sh
+# /etc/inittab
+#
+# Copyright (C) 2001 Erik Andersen <andersen@codepoet.org>
+#
+# Note: BusyBox init doesn't support runlevels.  The runlevels field is
+# completely ignored by BusyBox init. If you want runlevels, use
+# sysvinit.
+#
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# id        == tty to run on, or empty for /dev/console
+# runlevels == ignored
+# action    == one of sysinit, respawn, askfirst, wait, and once
+# process   == program to run
 
-# /bin/sh invocations on selected ttys
-#
-# Start an "respawn" shell on the console (whatever that may be)
-::respawn:-/bin/sh
-# Start an "askfirst" shell on /dev/tty2-4
-tty2::askfirst:-/bin/sh
-tty3::askfirst:-/bin/sh
-tty4::askfirst:-/bin/sh
+# Startup the system
+::sysinit:/bin/mount -t proc proc /proc
+::sysinit:/bin/mount -o remount,rw /
+::sysinit:/bin/mkdir -p /dev/pts
+::sysinit:/bin/mkdir -p /dev/shm
+::sysinit:/bin/mount -a
+::sysinit:/bin/hostname -F /etc/hostname
 
-# /sbin/getty invocations for selected ttys
-#
-#tty4::respawn:/sbin/getty 38400 tty5
-#tty5::respawn:/sbin/getty 38400 tty6
+# Put a getty on the serial port
+console::respawn:/sbin/getty -L  console 0 vt100 # GENERIC_SERIAL
 
-# Example of how to put a getty on a serial line (for a terminal)
-#
-ttyS0::respawn:-/bin/sh
-#::respawn:/sbin/getty -L ttyS0 9600 vt100
-#::respawn:/sbin/getty -L ttyS1 9600 vt100
-#
-# Example how to put a getty on a modem line.
-#::respawn:/sbin/getty 57600 ttyS2
+# Auto-login as root on ttyS0
+::respawn:/sbin/getty ttyS0 38400 xterm -n -l /bin/sh
+::respawn:/sbin/getty -L ttyS1 9600 vt100
+::respawn:/sbin/getty -L ttyS2 9600 vt100
+::respawn:/sbin/getty -L ttyS3 9600 vt100
+
+# Stuff to do for the 3-finger salute
+#::ctrlaltdel:/sbin/reboot
 
 # Stuff to do before rebooting
 ::ctrlaltdel:/sbin/reboot -f
-#::ctrlaltdel:/sbin/swapoff
