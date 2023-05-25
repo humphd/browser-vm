@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is creating now linux image 🚀
 on: [push]
 jobs:
   Build:
-    runs-on: macos-latest-xl
+    runs-on: macos-12-xl
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
