@@ -11,7 +11,11 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+          
+      - name: Install packages
+        run: |
+          brew install docker docker-machine
         
-      - name: Install requirements
+      - name: Start building
         run: |
           ./build.sh
