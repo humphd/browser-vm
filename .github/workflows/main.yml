@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is creating now linux image 🚀
 on: [push]
 jobs:
   Build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest-16-cores
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -12,10 +12,10 @@ jobs:
         run: |
           ls ${{ github.workspace }}
           
-      - name: Install packages
-        run: |
-          brew install docker colima
-          colima start
+#       - name: Install packages
+#         run: |
+#           brew install docker colima
+#           colima start
         
       - name: Start building
         run: |
