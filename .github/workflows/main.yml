@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is creating now linux image 🚀
 on: [push]
 jobs:
   Build:
-    runs-on: ubuntu-latest-16-cores
+    runs-on: ubuntu-20.04-16core
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
