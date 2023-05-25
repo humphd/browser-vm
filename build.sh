@@ -4,8 +4,10 @@ mkdir -p buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
 
 wget -P buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs  https://unofficial-builds.nodejs.org/download/release/v16.20.0/node-v16.20.0-linux-x86.tar.xz
 
-tar -xJvf
-tar node-v16.20.0-linux-x86.tar.xz
+tar -xJvf buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
+rm buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs/node-v16.20.0-linux-x86.tar.xz
+
+ls buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
 
 docker build -t buildroot .
 
