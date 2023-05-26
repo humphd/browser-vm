@@ -12,11 +12,20 @@ jobs:
         run: |
           ls ${{ github.workspace }}
           
-#       - name: Install packages
-#         run: |
-#           brew install docker colima
-#           colima start
+      - name: Install packages
+        run: |
+          brew install docker colima
+          colima start
         
       - name: Start building
         run: |
           ./build.sh
+          ls
+          ls dist
+      
+      - name: Archive build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: "v86-linux.iso"
+          path: dist/v86-linux.iso
+          
