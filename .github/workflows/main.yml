@@ -13,10 +13,10 @@ jobs:
           echo '=== ls ==='
           ls
           
-      - name: Install packages
-        run: |
-          brew install docker colima
-          colima start
+#       - name: Install packages
+#         run: |
+#           brew install docker colima
+#           colima start
         
       - name: Start building
         run: |
