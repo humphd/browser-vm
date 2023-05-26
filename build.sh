@@ -11,7 +11,7 @@ wget https://unofficial-builds.nodejs.org/download/release/v16.20.0/node-$VERSIO
 # Unzip the binary archive
 tar -xJf node-$VERSION-linux-x86.tar.xz
 mv node-$VERSION-linux-x86/{bin,include,lib,share} .
-rm node-$VERSION-linux-x86 node-v16.20.0-linux-x86.tar.xz
+rm -rf node-$VERSION-linux-x86 node-v16.20.0-linux-x86.tar.xz
 
 cd -
 
