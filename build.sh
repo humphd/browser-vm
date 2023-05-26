@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 
-# Create nodejs directory
-mkdir -p buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
-cd buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
+# Create nodejs directory if not exists
+if [[ -d buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs ]]
+then
+    mkdir -p buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
+    cd buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
 
-# Download nodejs
-VERSION=v16.20.0
-wget https://unofficial-builds.nodejs.org/download/release/v16.20.0/node-$VERSION-linux-x86.tar.xz
+    # Download nodejs
+    VERSION=v16.20.0
+    wget https://unofficial-builds.nodejs.org/download/release/v16.20.0/node-$VERSION-linux-x86.tar.xz
 
-# Unzip the binary archive
-tar -xJf node-$VERSION-linux-x86.tar.xz
-mv node-$VERSION-linux-x86/{bin,include,lib,share} .
-rm -rf node-$VERSION-linux-x86 node-v16.20.0-linux-x86.tar.xz
+    # Unzip the binary archive
+    tar -xJf node-$VERSION-linux-x86.tar.xz
+    mv node-$VERSION-linux-x86/{bin,include,lib,share} .
+    rm -rf node-$VERSION-linux-x86 node-$VERSION-linux-x86.tar.xz
 
-cd -
+    cd -
+fi
 
 docker build -t buildroot .
 

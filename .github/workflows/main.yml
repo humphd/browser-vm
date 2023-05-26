@@ -1,5 +1,5 @@
 name: Build image
-run-name: ${{ github.actor }} is creating now linux image 🚀
+run-name: ${{ github.actor }} is creating now linux image
 on: [push]
 jobs:
   Build:
@@ -8,11 +8,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
         
-      - name: List files in the repository
-        run: |
-          echo '=== ls ==='
-          ls
-          
 #       - name: Install packages
 #         run: |
 #           brew install docker colima
@@ -21,14 +16,9 @@ jobs:
       - name: Start building
         run: |
           ./build.sh
-          echo '=== ls ==='
-          ls
-          echo '=== ls dist/ ==='
-          ls dist
       
       - name: Archive build artifact
         uses: actions/upload-artifact@v3
         with:
-          name: "v86-linux.iso"
-          path: dist/v86-linux.iso
-          
+          name: "linux.iso"
+          path: dist/linux.iso
