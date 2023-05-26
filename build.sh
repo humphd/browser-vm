@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
+# Create nodejs directory
 mkdir -p buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
+cd buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
 
-wget -P buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs  https://unofficial-builds.nodejs.org/download/release/v16.20.0/node-v16.20.0-linux-x86.tar.xz
+# Download nodejs
+VERSION=v16.20.0
+wget https://unofficial-builds.nodejs.org/download/release/v16.20.0/node-$VERSION-linux-x86.tar.xz
 
-tar -xJf buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs/node-v16.20.0-linux-x86.tar.xz
-rm buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs/node-v16.20.0-linux-x86.tar.xz
+# Unzip the binary archive
+tar -xJf node-$VERSION-linux-x86.tar.xz
+mv node-$VERSION-linux-x86/{bin,include,lib,share} .
+rm node-$VERSION-linux-x86 node-v16.20.0-linux-x86.tar.xz
 
-ls buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
+cd -
 
 docker build -t buildroot .
 
