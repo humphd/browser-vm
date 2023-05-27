@@ -1,0 +1,17 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Start Building"
+          command: "./build.sh"
+      - store_artifacts:
+          path: dist/linux.iso
+
+workflows:
+  build-workflow:
+    jobs:
+      - build
