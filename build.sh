@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
 
-# Create nodejs directory if not exists
-if [[ -d buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs ]]
+# Create nodejs library directory if not exists
+NODE_LIB_DIR='buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs'
+if [[ ! -d $NODE_LIB_DIR ]]
 then
-    mkdir -p buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
-    cd buildroot-v86/board/v86/rootfs_overlay/usr/local/lib/nodejs
+    mkdir -p $NODE_LIB_DIR
+    cd $NODE_LIB_DIR
 
     # Download nodejs
-    VERSION=v16.20.0
-    wget https://unofficial-builds.nodejs.org/download/release/v16.20.0/node-$VERSION-linux-x86.tar.xz
+    VERSION="v16.20.0"
+    wget "https://unofficial-builds.nodejs.org/download/release/v16.20.0/node-$VERSION-linux-x86.tar.xz"
 
     # Unzip the binary archive
-    tar -xJf node-$VERSION-linux-x86.tar.xz
+    tar -xJf "node-$VERSION-linux-x86.tar.xz"
     mv node-$VERSION-linux-x86/{bin,include,lib,share} .
-    rm -rf node-$VERSION-linux-x86 node-$VERSION-linux-x86.tar.xz
+    rm -rf "node-$VERSION-linux-x86" "node-$VERSION-linux-x86.tar.xz"
 
     cd -
 fi
